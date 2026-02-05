@@ -62,3 +62,11 @@ Ce projet est un outil personnel à but éducatif. Il n'est pas affilié, associ
 Utilisez-le de manière responsable. Vérifiez toujours votre panier avant de payer !
 
 ---
+
+## 📄 Licence
+
+Ce projet est sous licence **CC BY-NC-ND 4.0**.
+Vous êtes libre d'utiliser cet outil pour vos besoins personnels.
+Toute utilisation commerciale ou modification du code source est interdite sans autorisation.
+
+---
