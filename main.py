@@ -23,7 +23,7 @@ genai.configure(api_key=API_KEY)
 # Utilisation du modèle 2.0 Flash (celui que tu as repéré)
 model = genai.GenerativeModel('gemini-2.0-flash')
 
-app = FastAPI(title="Moulinex to Leclerc API")
+app = FastAPI(title="Liste de courses to Leclerc API")
 
 # --- NOUVEAU : Mémoire temporaire simple ---
 # Dans une vraie app, on utiliserait une base de données (SQLite/Postgres).
@@ -65,7 +65,7 @@ async def analyser_liste(file: UploadFile = File(...)):
 
         # ... (Le reste du code avec Gemini reste identique) ...
         prompt = """
-        Tu es un assistant expert en courses. Analyse cette image de liste de courses (style My Moulinex).
+        Tu es un assistant expert en courses. Analyse cette image de liste de courses.
         Ta mission :
         1. Identifie tous les ingrédients alimentaires.
         2. Ignore les ustensiles.

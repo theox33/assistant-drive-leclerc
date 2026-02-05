@@ -1,4 +1,4 @@
-# 🛒 Assistant Courses IA (Moulinex to Leclerc)
+# 🛒 Assistant Courses IA (Liste de courses to Leclerc Drive)
 
 ![Version](https://img.shields.io/badge/version-3.0-blue)
 ![Tech](https://img.shields.io/badge/Gemini-2.0%20Flash-orange)

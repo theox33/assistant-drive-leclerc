@@ -1,4 +1,4 @@
-console.log("🛒 Extension Moulinex V6 (Fix Start) chargée !");
+console.log("🛒 Extension V6 (Fix Start) chargée !");
 
 const wait = (ms) => new Promise(resolve => setTimeout(resolve, ms));
 
@@ -317,12 +317,12 @@ function genererRapportFinal(history) {
 }
 
 function afficherBoutonDemarrage() {
-    const oldPanel = document.getElementById("moulinex-panel");
+    const oldPanel = document.getElementById("list-panel");
     if (oldPanel) oldPanel.remove();
 
     const btn = document.createElement("button");
-    btn.id = "btn-moulinex-start";
-    btn.innerText = "🤖 IMPORTER LISTE MOULINEX";
+    btn.id = "btn-list-start";
+    btn.innerText = "🤖 IMPORTER LISTE ";
     btn.style.cssText = "position:fixed; top:150px; right:10px; z-index:9999; padding:15px; background:#e04f00; color:white; font-weight:bold; border:none; border-radius:8px; cursor:pointer; box-shadow: 0 4px 6px rgba(0,0,0,0.3); font-family: sans-serif;";
     document.body.appendChild(btn);
 
@@ -365,16 +365,16 @@ function afficherBoutonDemarrage() {
 }
 
 function afficherPanneauControle(restant, total, isPaused, lastLog) {
-    const oldPanel = document.getElementById("moulinex-panel");
+    const oldPanel = document.getElementById("list-panel");
     if (oldPanel) oldPanel.remove();
-    const oldBtn = document.getElementById("btn-moulinex-start");
+    const oldBtn = document.getElementById("btn-list-start");
     if (oldBtn) oldBtn.remove();
 
     const fait = total - restant;
     const pourcent = Math.round((fait / total) * 100);
 
     const panel = document.createElement("div");
-    panel.id = "moulinex-panel";
+    panel.id = "list-panel";
     panel.style.cssText = "position:fixed; top:120px; right:10px; z-index:9999; width: 280px; background:white; border-radius:10px; box-shadow: 0 4px 15px rgba(0,0,0,0.3); padding:15px; font-family: sans-serif; border: 1px solid #ddd; font-size:13px;";
 
     // Si on a une info sur le dernier choix, on l'affiche
@@ -389,7 +389,7 @@ function afficherPanneauControle(restant, total, isPaused, lastLog) {
     }
 
     panel.innerHTML = `
-        <div style="font-weight:bold; margin-bottom:10px; color:#333; font-size:15px;">🤖 Assistant Moulinex</div>
+        <div style="font-weight:bold; margin-bottom:10px; color:#333; font-size:15px;">🤖 Assistant courses</div>
         
         <div style="display:flex; justify-content:space-between; font-size:12px; margin-bottom:5px;">
             <span>Progression</span>
@@ -401,7 +401,7 @@ function afficherPanneauControle(restant, total, isPaused, lastLog) {
 
         ${infoChoix}
 
-        <div id="moulinex-status" style="font-size:12px; color:#666; margin-bottom:15px; font-weight:bold; min-height:18px;">
+        <div id="courses-status" style="font-size:12px; color:#666; margin-bottom:15px; font-weight:bold; min-height:18px;">
             ${isPaused ? "⏸️ En Pause" : "En cours..."}
         </div>
 
@@ -457,6 +457,6 @@ async function scrollerPourChargerTout() {
 }
 
 function updateStatusText(text) {
-    const el = document.getElementById("moulinex-status");
+    const el = document.getElementById("courses-status");
     if (el) el.innerText = text;
 }
