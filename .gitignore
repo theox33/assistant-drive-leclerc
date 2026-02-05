@@ -1,0 +1,15 @@
+# Fichiers systèmes
+.DS_Store
+Thumbs.db
+
+# Environnement Python (si tu as gardé l'ancien dossier)
+.venv/
+__pycache__/
+*.pyc
+
+# Variables d'environnement et clés secrètes
+.env
+
+# Dossiers d'IDE (VS Code, etc)
+.vscode/
+.idea/

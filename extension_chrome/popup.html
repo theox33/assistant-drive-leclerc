@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <style>
+        body { width: 320px; font-family: 'Segoe UI', sans-serif; padding: 0; margin: 0; background: #f4f4f4; }
+        
+        /* Header */
+        .header { background: white; padding: 15px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #ddd; }
+        h2 { margin: 0; color: #e04f00; font-size: 18px; }
+        .settings-btn { cursor: pointer; font-size: 20px; color: #666; background: none; border: none; }
+        .settings-btn:hover { color: #333; }
+
+        .container { padding: 15px; }
+
+        /* Vues */
+        .view { display: none; }
+        .view.active { display: block; animation: fadeIn 0.3s; }
+
+        /* Formulaires */
+        label { font-size: 12px; font-weight: bold; color: #555; display: block; margin-bottom: 5px; }
+        input[type="password"], textarea { width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px; box-sizing: border-box; margin-bottom: 15px; font-family: inherit; }
+        textarea { resize: none; height: 80px; }
+
+        /* Onglets */
+        .tabs { display: flex; gap: 10px; margin-bottom: 15px; }
+        .tab { flex: 1; padding: 8px; border: 1px solid #ddd; background: white; cursor: pointer; text-align: center; border-radius: 5px; font-size: 13px; }
+        .tab.active { background: #e04f00; color: white; border-color: #e04f00; font-weight: bold; }
+        
+        /* Upload Zone */
+        .file-upload { border: 2px dashed #ccc; padding: 20px; text-align: center; background: white; border-radius: 5px; cursor: pointer; transition: 0.2s; }
+        .file-upload:hover { border-color: #e04f00; background: #fff0e6; }
+        
+        /* Boutons */
+        .btn { width: 100%; padding: 12px; border: none; border-radius: 5px; font-size: 14px; font-weight: bold; cursor: pointer; color: white; }
+        .btn-primary { background: #27ae60; }
+        .btn-primary:hover { background: #219150; }
+        .btn-primary:disabled { background: #95a5a6; cursor: not-allowed; }
+        .btn-secondary { background: #7f8c8d; margin-top: 10px; }
+
+        #status { margin-top: 15px; text-align: center; font-size: 12px; color: #666; min-height: 20px; }
+        
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <h2>🥕 Assistant IA</h2>
+        <button id="btnSettings" class="settings-btn" title="Paramètres">⚙️</button>
+    </div>
+
+    <div class="container">
+        
+        <div id="view-settings" class="view">
+            <p style="font-size:13px; color:#666; margin-top:0;">Pour fonctionner, l'extension a besoin de ta clé Google Gemini.</p>
+            
+            <label>Ta Clé API (commence par AIza...)</label>
+            <input type="password" id="apiKeyInput" placeholder="Colle ta clé ici...">
+            
+            <button id="btnSaveKey" class="btn btn-primary">💾 Sauvegarder</button>
+            <button id="btnCancelSettings" class="btn btn-secondary" style="display:none">Retour</button>
+            
+            <p style="font-size:11px; color:#999; margin-top:15px; text-align:center;">
+                La clé est stockée uniquement dans ton navigateur.<br>
+                <a href="https://aistudio.google.com/app/apikey" target="_blank" style="color:#e04f00;">Obtenir une clé gratuite</a>
+            </p>
+        </div>
+
+        <div id="view-main" class="view">
+            <div class="tabs">
+                <div class="tab active" data-target="img-section">📸 Image</div>
+                <div class="tab" data-target="txt-section">📝 Texte</div>
+            </div>
+
+            <div id="img-section" class="subview active" style="display:block">
+                <div class="file-upload" onclick="document.getElementById('fileInput').click()">
+                    <span id="fileName" style="font-size:24px; display:block; margin-bottom:5px;">📂</span>
+                    <span id="fileText">Clique pour choisir une image</span>
+                    <input type="file" id="fileInput" style="display: none;" accept="image/*">
+                </div>
+            </div>
+
+            <div id="txt-section" class="subview" style="display:none">
+                <textarea id="textInput" placeholder="Ex: 200g riz, 6 oeufs, beurre..."></textarea>
+            </div>
+
+            <button id="go" class="btn btn-primary" style="margin-top: 15px;">Lancer les courses 🚀</button>
+            <div id="status"></div>
+        </div>
+
+    </div>
+
+    <script src="popup.js"></script>
+</body>
+</html>
